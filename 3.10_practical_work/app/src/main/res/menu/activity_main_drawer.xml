@@ -18,7 +18,7 @@
             android:title="@string/menu_slideshow" />
         <item
             android:id="@+id/nav_mainActivity2"
-            android:title="@string/menu_main_activity2" />
+            android:title="MainActivity2" />
 
     </group>
 </menu>

@@ -2,16 +2,14 @@ package ru.samsung.itschool.a3_9_practical_work
 
 import android.os.Bundle
 import android.view.*
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    public var mActionMode: ActionMode? =null;
+    public var mActionMode: ActionMode? = null;
     public var mActionModeCallback: ActionMode.Callback? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        mActionModeCallback = object: ActionMode.Callback {
+        mActionModeCallback = object : ActionMode.Callback {
             override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
-                p0!!.menuInflater.inflate(R.menu.context_menu,p1)
+                p0!!.menuInflater.inflate(R.menu.context_menu, p1)
                 return true
             }
 
@@ -31,11 +29,11 @@ class MainActivity : AppCompatActivity() {
 
             override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
                 // здесь обрабатываются клики на элементы контекстного AppBar
-                if(p1!!.itemId == R.id.search)
+                if (p1?.itemId == R.id.search)
                     Toast.makeText(applicationContext, "search", Toast.LENGTH_SHORT).show()
-                if(p1!!.itemId == R.id.gallery)
+                if (p1?.itemId == R.id.gallery)
                     Toast.makeText(applicationContext, "gallery", Toast.LENGTH_SHORT).show()
-                p0!!.finish()
+                p0?.finish()
                 return false
             }
 
@@ -48,8 +46,8 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-            mActionMode= startActionMode(mActionModeCallback);
+                .setAction("Action", null).show()
+            mActionMode = startActionMode(mActionModeCallback);
         }
     }
 
@@ -70,12 +68,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
         super.onCreateContextMenu(menu, v, menuInfo)
         //menuInflater.inflate(R.menu.menu_main, menu)
-        menu!!.add(Menu.NONE, 101, Menu.NONE, "Открыть");
-        menu!!.add(Menu.NONE, 102, Menu.NONE, "Сохранить");
-        menu!!.add(Menu.NONE, 103, Menu.NONE, "Выйти");
+        menu?.add(Menu.NONE, 101, Menu.NONE, "Открыть")
+        menu?.add(Menu.NONE, 102, Menu.NONE, "Сохранить")
+        menu?.add(Menu.NONE, 103, Menu.NONE, "Выйти")
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
